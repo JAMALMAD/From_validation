@@ -43,8 +43,24 @@ class SplashScreen extends StatelessWidget {
             SizedBox(height: 20,),
             ElevatedButton(onPressed: (){
               if(_key.currentState!.validate()){
-                debugPrint("user name:${nameCtrl.
-                text}age:${ageCtrl.text}");
+                showDialog(context: context, builder: (_)
+                =>AlertDialog(
+                  title: Text("user Info"),
+                  content: Column(
+                    children: [
+                      Text("${nameCtrl.text}"),
+                      Text("${ageCtrl.text}"),
+                    ],
+                  ),
+                  actions: [
+                    TextButton(onPressed: (){
+                      Navigator.pop(context);
+                    },
+                        child: Text("ok")),
+                  ],
+                ));
+                // debugPrint("user name:${nameCtrl.
+                // text}age:${ageCtrl.text}");
               }
             }, child: Text("Submit"))
           ],
